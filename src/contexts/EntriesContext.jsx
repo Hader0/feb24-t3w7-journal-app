@@ -1,10 +1,14 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 
 // Create the context 
 // 		SomeContextVariable = createContext(defaultValue);
 const JournalEntriesDataContext = createContext([]);
 const JournalEntriesSetterContext = createContext(null);
+
+// function SomeExample(){
+// 	const journalData = useContext(JournalEntriesContext);
+// }
 
 // Create custom hooks to access the context data 
 export function useJournalEntriesData(){
@@ -23,8 +27,13 @@ export function useJournalEntriesSetter(){
 }
 
 // Create the context provider 
+
 export default function JournalEntriesProvider(props){
 	let [journalEntries, setJournalEntries] = useState([]);
+
+	useEffect(() => {
+		console.log(journalEntries);
+	}, [journalEntries]);
 
 	return(
 		
