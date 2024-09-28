@@ -2,23 +2,24 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { useJournalEntriesData } from './contexts/EntriesContext'
+import { useJournalEntriesData, useJournalEntriesSetter } from './contexts/EntriesContext';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   // const journalEntriesData = useContext(JournalEntriesContext);
   const journalEntriesData = useJournalEntriesData();
+  const journalEntriesSetter = useJournalEntriesSetter();
 
   return (
     <>
+      <h1>Journal Entries</h1>
+      {journalEntriesData.map(entry => {
+        return <h6>{entry.name}</h6>
+      })}
+
 
       <div>
-        <h1>Journal Entries</h1>
-        {journalEntriesData.map(entry => {
-          return <h6>{entry.name}</h6>
-        })}
-
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -38,7 +39,6 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      
     </>
   )
 }
