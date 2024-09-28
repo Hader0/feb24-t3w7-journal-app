@@ -6,10 +6,6 @@ import { createContext, useContext, useState } from "react";
 const JournalEntriesDataContext = createContext([]);
 const JournalEntriesSetterContext = createContext(null);
 
-// function SomeExample(){
-// 	const journalData = useContext(JournalEntriesContext);
-// }
-
 // Create custom hooks to access the context data 
 export function useJournalEntriesData(){
 	console.log("Passing data around!");
@@ -27,7 +23,6 @@ export function useJournalEntriesSetter(){
 }
 
 // Create the context provider 
-
 export default function JournalEntriesProvider(props){
 	let [journalEntries, setJournalEntries] = useState([]);
 
